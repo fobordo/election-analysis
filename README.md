@@ -8,7 +8,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
 * A total of 369,711 votes were cast in this congressional election.
   
-  To determine the total number of votes cast in this congression election, first, the variable `total_votes` was initialized and set to equal zero.
+  To determine the total number of votes cast in this election, first, the variable `total_votes` was initialized and set to equal zero.
     
     ```
     total_votes = 0
