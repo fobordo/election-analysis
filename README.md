@@ -18,7 +18,7 @@
   Finally, script was written to print the number of total votes to the election analysis text file.
   ![Total Votes Results Script](/Screenshots/TotalVotes_Results.png)
   
-  As a result, the number of total votes was printed onto the election analysis text file, along with the "Election Results" title and "County Votes:" header:
+  As a result, the number of total votes was printed onto the election analysis text file, along with the "Election Results" title and "County Votes" header:
   ![Total Votes Text File](/Screenshots/TotalVotes_TextFile.png)
   
 * Provide a breakdown of the number of votes and the percentage of total votes for each county in the precinct.
