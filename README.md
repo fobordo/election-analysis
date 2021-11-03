@@ -53,7 +53,10 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   
   ![County Results Text File](/Screenshots/County_TextFile.png)
   
-* Which county had the largest number of votes?
+* The county with the largest number of votes was Denver.
+  
+  To determine which county had the largest number of votes,...
+
 * Provide a breakdown of the number of votes and the percentage of the total votes each candidate received.
 * Which candidate won the election, what was their vote count, and what was their percentage of the total votes?
 
