@@ -14,7 +14,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     total_votes = 0
     ```
  
-  ***Include text for opening election results csv***
+  Then, a `for` loop was written to loop through each row in the election results CSV file and increment the total vote count in `total_votes` by 1 after each       loop.
   
     ```Python
     # Read the csv and convert it into a list of dictionaries
@@ -23,16 +23,12 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
       # Read the header
       header = next(reader)
-    ```
+      
+      # For each row in the CSV file.
+      for row in reader:
 
-  Then, a `for` loop was written to loop through each row in the election results CSV file and increment the total vote count in `total_votes` by 1 after each       loop.
-  
-    ```Python
-    # For each row in the CSV file.
-    for row in reader:
-    
-        # Add to the total vote count
-        total_votes += 1
+          # Add to the total vote count
+          total_votes += 1
     ```
 
   Finally, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was set equal to the variable `election_results`, and printed to both the terminal and the election analysis text file.
