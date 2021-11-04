@@ -4,6 +4,30 @@
   
 The purpose of the Election Audit was to aid the Colorado Board of Elections Committee in analyzing the [tabulated election results](https://github.com/fobordo/election-analysis/blob/bbee13297e47ac142ab7102fc71465b9ae1a6401/Resources/election_results.csv) of the U.S. Congressional Precinct in Colorado. The goal of the Election Audit was to determine the total number of votes cast, total number of votes for each candidate, percentage of votes for each candidate, and the winner of the election based on the popular vote. The programming language, Python, was used to analyze and output the final election results.
 
+The Election Audit was analyzed by first adding dependencies to the script to increase the functional programming of the code. Using the `import` statement, the Python's built-in `csv` module was imported so the script could pull in data from the external election results CSV file and perform operations on it. The `import` statement was also used to import the `os` module, which was necessary to interact with the operating system. 
+  
+  ```Python
+  # Add our dependencies.
+  import csv
+  import os
+  ```
+
+To load the election results CSV file, chaining was used to connect the `os.path` submodule, which allows the user to access files on different operating systems, like macOS and Windows, with the `join()` function, which joins the file path components together and returns a direct path. Within the parantheses of the `join()` function, the name of the folder that contained the election results CSV file, "Resources", and the name of the election results CSV file, "election_results.csv", were added. The `os.path.join("Resources", "election_results.csv")` expression was stored in the `file_to_load` variable.
+
+  ```Python
+  # Add a variable to load a file from a path.
+  file_to_load = os.path.join("Resources", "election_results.csv")
+  ```
+
+It was determined that the election analysis data would be written to the text file named "election_analysis.txt," which was located in the "analysis" folder. As such, the `os.path.join("analysis", "election_analysis.txt")` expression was stored in the variable `file_to_save`, which would later be used to indicate where to write the election analysis data.
+
+  ```Python
+  # Add a variable to save the file to a path.
+  file_to_save = os.path.join("analysis", "election_analysis.txt")
+  ```
+  
+Once these dependencies and variables were established, we obtained the results of the Election Audit.  
+
 ## Election-Audit Results
 
 * **A total of 369,711 votes were cast in this congressional election.**
@@ -368,5 +392,51 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     -------------------------
     ```
 
-## Election-Audit Summary: 
-  In a summary statement, provide a business proposal to the election commission on how this script can be used—with some modifications—for any election. Give at     least two examples of how this script can be modified to be used for other elections.
+## Election-Audit Summary:
+The Election Audit script can easily be used for any election, with a few modifications. Below are a few examples of modifications that must be made for the analysis of other elections:
+
+1. If the file type of the election results file is not CSV, another built-in module will have to be imported to pull in data from external files nad perform operations on them:
+
+  ```Python
+  import csv
+  ```
+  
+  * `csv` must be replaced with the appropriate Python module.
+
+2. The folder and file names of other election results must be changed in the `file_to_load` variable so the new data can be read from the appropriate file:
+  
+  ```Python
+  # Add a variable to load a file from a path.
+  file_to_load = os.path.join("Resources", "election_results.csv")
+  ```
+  
+  * "Resources" should be replaced with the folder name of the folder that contains the election results file.
+  * "election_results.csv" should be replaced with the file name of the file that contains the election results data.
+
+3. The folder and file name of the election analysis must be changed in the `file_to_save` variable so the analysis results can be written to the appropriate file:
+  
+  ```Python
+  file_to_save = os.path.join("analysis", "election_analysis.txt")
+  ```
+  
+  * "analysis" should be replaced with the folder name of the folder that contains the election analysis file.
+  * "election_analysis.txt" should be replaced with the file name of the file that the analysis results data will be written to.
+
+
+4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file must be changed to reference the appropriate columns to obtain the desired data:
+
+  ```Python
+  # For each row in the CSV file.
+  for row in reader:
+
+      # Get the candidate name from each row.
+      candidate_name = row[2]
+
+      # Get the county name from each row.
+      county_name = row[1]
+  ```
+  
+  * In the `candidate_name = row[2]` expression, the number "2" should be changed to the index of the appropriate column in the election results file that contians the candidate names.
+  * In the `county_name = row[1]` expression, the number "1" should be changed to the index of the appropriate column in the election results file that contians the county names.
+
+The rest of the script may remain the same to return the same election analysis data as those that were returned from this project.
