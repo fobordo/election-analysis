@@ -236,7 +236,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   
   An `if` statement was nested inside of the `for` loop to check if the `candidate_name` was added to the `candidate_options` list yet. If `not`, the `candidate_name` would be added to `candidate_options`, and the number of votes for that candidate would begin to be tracked within the `candidate_votes` dictionary.
   
-      ```Python
+      ```python
       # If the candidate does not match any existing candidate add it to the candidate list
       if candidate_name not in candidate_options:
 
