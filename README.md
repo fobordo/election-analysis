@@ -377,15 +377,15 @@ Once these dependencies and variables were established, we obtained the results 
   To determine which candidate won the election, their vote count, and their percentage of the total votes, first, the following three variables were initialized:
   
   ```Python
-    # Track the winning candidate, vote count and percentage
-    winning_candidate = ""
-    winning_count = 0
-    winning_percentage = 0
+  # Track the winning candidate, vote count and percentage
+  winning_candidate = ""
+  winning_count = 0
+  winning_percentage = 0
   ```
     
-    - `winning_candidate` was initialized as an empty string to later represent the name of the candidate with the largest number of votes.
-    - `winning_count` was set to zero to later represent the total number of votes of the winning candidate.
-    - `winning_percentage` was set to zero to later represent the percentage of total votes of the winning candidate.
+  - `winning_candidate` was initialized as an empty string to later represent the name of the candidate with the largest number of votes.
+  - `winning_count` was set to zero to later represent the total number of votes of the winning candidate.
+  - `winning_percentage` was set to zero to later represent the percentage of total votes of the winning candidate.
 
   Then, within the `with` statement,
   
