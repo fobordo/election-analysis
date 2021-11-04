@@ -100,7 +100,7 @@ Once these dependencies and variables were established, we obtained the results 
     county_votes = {}
     ```
   
-  Then, a `for` loop was written to loop through each row in the election results CSV file and extract the county name for each row, which was stored in the variable `county_name`.
+  Then, a `for` loop was written to loop through each row in the election results CSV file and extract the county name from the appropriate index, which in this case was "1" because county names were located in Column 2 of the CSV file. The extracted county name was then stored in the variable `county_name`.
   
     ```Python
     # For each row in the CSV file.
@@ -247,7 +247,7 @@ Once these dependencies and variables were established, we obtained the results 
     candidate_votes = {}
     ```
   
-  Then, a `for` loop was written to loop through each row in the election results CSV file and extract the candidate name for each row, which was stored in the variable `candidate_name`.
+  Then, a `for` loop was written to loop through each row in the election results CSV file and extract the candidate name from the appropriate index, which in this case was "2" because candidate names were located in Column 3 of the CSV file. The extracted candidate name was then stored in the variable `candidate_name`.
   
     ```Python
     # For each row in the CSV file.
