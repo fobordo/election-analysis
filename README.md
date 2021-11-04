@@ -14,7 +14,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     total_votes = 0
     ```
  
-  ***Include text for opening election results csv**
+  ***Include text for opening election results csv***
   
     ```Python
     # Read the csv and convert it into a list of dictionaries
