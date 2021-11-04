@@ -454,7 +454,7 @@ Once these dependencies and variables were established, we obtained the results 
 ## Election-Audit Summary:
 The Election Audit script can easily be used for any election, with a few modifications. Below are a few examples of modifications that must be made for the analysis of other elections:
 
-  1. If the file type of the election results file is not CSV, another built-in module will have to be imported in order to pull in data from external files and perform operations on them:
+1. If the file type of the election results file is not CSV, another built-in module will have to be imported in order to pull in data from external files and perform operations on them:
 
   ```Python
   import csv
@@ -462,8 +462,8 @@ The Election Audit script can easily be used for any election, with a few modifi
   
   * `csv` must be replaced with the appropriate Python module.
 
-  2. The folder and file names of other election results must be changed in the `file_to_load` variable so the new data can be read from the appropriate file:
-  
+2. The folder and file names of other election results must be changed in the `file_to_load` variable so the new data can be read from the appropriate file:
+
   ```Python
   # Add a variable to load a file from a path.
   file_to_load = os.path.join("Resources", "election_results.csv")
@@ -472,7 +472,7 @@ The Election Audit script can easily be used for any election, with a few modifi
   * "Resources" should be replaced with the folder name of the folder that contains the election results file.
   * "election_results.csv" should be replaced with the file name of the file that contains the election results data.
 
-  3. The folder and file name of the election analysis must be changed in the `file_to_save` variable so the analysis results can be written to the appropriate file:
+3. The folder and file name of the election analysis must be changed in the `file_to_save` variable so the analysis results can be written to the appropriate file:
   
   ```Python
   file_to_save = os.path.join("analysis", "election_analysis.txt")
@@ -481,7 +481,7 @@ The Election Audit script can easily be used for any election, with a few modifi
   * "analysis" should be replaced with the folder name of the folder that contains the election analysis file.
   * "election_analysis.txt" should be replaced with the file name of the file that the analysis results data will be written to.
 
-  4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file must be changed to reference the appropriate columns to obtain the desired data:
+4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file must be changed to reference the appropriate columns to obtain the desired data:
 
   ```Python
   # For each row in the CSV file.
