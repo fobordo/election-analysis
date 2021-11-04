@@ -2,7 +2,9 @@
 
 ## Overview of Election Audit
   
-The purpose of the Election Audit was to aid the Colorado Board of Elections Committee in analyzing the [tabulated election results](https://github.com/fobordo/election-analysis/blob/bbee13297e47ac142ab7102fc71465b9ae1a6401/Resources/election_results.csv) of the U.S. Congressional Precinct in Colorado. The goal of the Election Audit was to determine the total number of votes cast, total number of votes for each candidate, percentage of votes for each candidate, and the winner of the election based on the popular vote. The programming language, Python, was used to analyze and output the final election results.
+The purpose of the Election Audit was to aid the Colorado Board of Elections Committee in analyzing the [tabulated election results](https://github.com/fobordo/election-analysis/blob/bbee13297e47ac142ab7102fc71465b9ae1a6401/Resources/election_results.csv) of the U.S. Congressional Precinct in Colorado. The goal of the Election Audit was to determine the total number of votes cast, total number of votes for each candidate, percentage of votes for each candidate, and the winner of the election based on the popular vote. The programming language, Python, was used to analyze and output the final election results. 
+
+## Election-Audit Results
 
 The Election Audit was analyzed by first adding dependencies to the script to increase the functional programming of the code. Using the `import` statement, the Python's built-in `csv` module was imported so the script could pull in data from the external election results CSV file and perform operations on it. The `import` statement was also used to import the `os` module, which was necessary to interact with the operating system. 
   
@@ -26,9 +28,7 @@ It was determined that the election analysis data would be written to the text f
   file_to_save = os.path.join("analysis", "election_analysis.txt")
   ```
   
-Once these dependencies and variables were established, we obtained the results of the Election Audit.  
-
-## Election-Audit Results
+Once these dependencies and variables were established, we obtained the results of the Election Audit. 
 
 * **A total of 369,711 votes were cast in this congressional election.**
   
@@ -421,7 +421,6 @@ The Election Audit script can easily be used for any election, with a few modifi
   
   * "analysis" should be replaced with the folder name of the folder that contains the election analysis file.
   * "election_analysis.txt" should be replaced with the file name of the file that the analysis results data will be written to.
-
 
 4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file must be changed to reference the appropriate columns to obtain the desired data:
 
