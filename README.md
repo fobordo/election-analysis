@@ -191,6 +191,23 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     # Save the county with the largest turnout to a text file.
     txt_file.write(largest_county_turnout_summary)
     ```
+  The resulting election analysis text file now included the county with the largest voter turnout:
+    
+    ```
+    Election Results
+    -------------------------
+    Total Votes: 369,711
+    -------------------------
+
+    County Votes:
+    Jefferson: 10.5% (38,855)
+    Denver: 82.8% (306,055)
+    Arapahoe: 6.7% (24,801)
+
+    -------------------------
+    Largest County Turnout: Denver
+    -------------------------
+    ```
 
 * **Provide a breakdown of the number of votes and the percentage of the total votes each candidate received.**
 * **Which candidate won the election, what was their vote count, and what was their percentage of the total votes?**
