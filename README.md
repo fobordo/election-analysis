@@ -55,7 +55,7 @@ Once these dependencies and variables were established, we obtained the results 
       header = next(reader)
    ```
    
-  Then, a `for` loop was written to loop through each row in `election_data.csv` and increment the total vote count in `total_votes` by 1 after each       loop.
+  Then, a `for` loop was written to loop through each row in `reader` and increment the total vote count in `total_votes` by 1 after each loop.
      
    ```Python
       # For each row in the CSV file.
@@ -71,11 +71,9 @@ Once these dependencies and variables were established, we obtained the results 
     with open(file_to_save, "w") as txt_file:
     ```
   
-  Finally, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was stored in the variable `election_results`, and printed to both the terminal and `txt_file`.
+  Within the `with` statement, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was stored in the variable `election_results`, and printed to both the terminal and `txt_file`.
   
     ```Python
-    with open(file_to_save, "w") as txt_file:
-
       election_results = (
           f"\nElection Results\n"
           f"-------------------------\n"
