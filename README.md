@@ -462,6 +462,7 @@ The Election Audit script can easily be used for any election, with a few modifi
   
   * `csv` must be replaced with the appropriate Python module.
 
+
 2. The folder and file names of other election results must be changed in the `file_to_load` variable so the new data can be read from the appropriate file:
 
   ```Python
@@ -469,8 +470,9 @@ The Election Audit script can easily be used for any election, with a few modifi
   file_to_load = os.path.join("Resources", "election_results.csv")
   ```
   
-  * "Resources" should be replaced with the folder name of the folder that contains the election results file.
-  * "election_results.csv" should be replaced with the file name of the file that contains the election results data.
+  * `"Resources"` should be replaced with the folder name of the folder that contains the election results file.
+  * `"election_results.csv"` should be replaced with the file name of the file that contains the election results data.
+
 
 3. The folder and file name of the election analysis must be changed in the `file_to_save` variable so the analysis results can be written to the appropriate file:
   
@@ -478,8 +480,9 @@ The Election Audit script can easily be used for any election, with a few modifi
   file_to_save = os.path.join("analysis", "election_analysis.txt")
   ```
   
-  * "analysis" should be replaced with the folder name of the folder that contains the election analysis file.
-  * "election_analysis.txt" should be replaced with the file name of the file that the analysis results data will be written to.
+  * `"analysis"` should be replaced with the folder name of the folder that contains the election analysis file.
+  * `"election_analysis.txt"` should be replaced with the file name of the file that the analysis results data will be written to.
+
 
 4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file must be changed to reference the appropriate columns to obtain the desired data:
 
@@ -494,7 +497,7 @@ The Election Audit script can easily be used for any election, with a few modifi
       county_name = row[1]
   ```
   
-  * In the `candidate_name = row[2]` expression, the number "2" should be changed to the index of the appropriate column in the election results file that contians the candidate names.
-  * In the `county_name = row[1]` expression, the number "1" should be changed to the index of the appropriate column in the election results file that contians the county names.
+  * In the `candidate_name = row[2]` expression, the number `2` should be changed to the index of the appropriate column in the election results file that contains the candidate names.
+  * In the `county_name = row[1]` expression, the number `1` should be changed to the index of the appropriate column in the election results file that contains the county names.
 
 The rest of the script may remain the same to return the same election analysis data as those that were returned from this project.
