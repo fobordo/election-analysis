@@ -454,7 +454,7 @@ Once these dependencies and variables were established, we obtained the results 
 ## Election-Audit Summary:
 The Election Audit script can easily be used for any election, with a few modifications. Below are a few examples of modifications that must be made for the analysis of other elections:
 
-1. If the file type of the election results file is not CSV, another built-in module will have to be imported to pull in data from external files nad perform operations on them:
+1. If the file type of the election results file is not CSV, another built-in module will have to be imported in order to pull in data from external files and perform operations on them:
 
   ```Python
   import csv
