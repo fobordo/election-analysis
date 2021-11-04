@@ -57,7 +57,7 @@ Once these dependencies and variables were established, we obtained the results 
           total_votes += 1
     ```
 
-  Finally, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was set equal to the variable `election_results`, and printed to both the terminal and the election analysis text file.
+  Finally, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was stored in the variable `election_results`, and printed to both the terminal and the election analysis text file.
   
     ```Python
     with open(file_to_save, "w") as txt_file:
