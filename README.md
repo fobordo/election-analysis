@@ -34,7 +34,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
         total_votes += 1
     ```
 
-  Finally, script was written to print the number of total votes to the election analysis text file.
+  Finally, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was set equal to the variable `election_results`, and printed to both the terminal and the election analysis text file.
   
     ```Python
     with open(file_to_save, "w") as txt_file:
@@ -93,7 +93,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
         county_name = row[1]
     ```
   
-  An if statement was nested inside of the `for` loop to check if the county name was added to the `county_list` yet. If not, the county name would be added to `county_list`, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
+  An `if` statement was nested inside of the `for` loop to check if the county name was added to the `county_list` yet. If not, the county name would be added to `county_list`, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
   
     ```Python
     # If statement that checks that the county does not match any existing county in the county list.
@@ -106,14 +106,14 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
             county_votes[county_name] = 0
     ```
   
-  Outside of the if statement, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the `for` loop.
+  Outside of the `if` statement, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the `for` loop.
   
     ```Python
     # Add a vote to current county's vote count.
     county_votes[county_name] += 1
     ```
   
-  Once the `for` loop finished looping through all the rows in the election results CSV file, a new `for` loop was written. The new `for` loop would loop through each `county_name` in the `county_votes` dictionary, and retrieve the corresponding total votes for that county name (`county_vote_count`). Then, the percentage of total votes for that county (`county_percentage`) was calculated. Finally, the county name (`county_name`), percentage of total votes (`county_percentage`), and total number of county votes (`county_vote_count`) were printed to the election analysis text file.
+  Once the `for` loop finished looping through all the rows in the election results CSV file, a new `for` loop was written. The new `for` loop would loop through each `county_name` in the `county_votes` dictionary, and retrieve the corresponding total votes for that county, which was stored in the variable `county_vote_count`. Then, the percentage of total votes for that county was calculated and stored in the variable `county_percentage`.
   
     ```Python
     # For loop to get the county from the county dictionary.
@@ -124,12 +124,17 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
           # Calculate the percentage of votes for the county.
           county_percentage = float(county_vote_count) / float(total_votes) * 100
-          county_results = (
-              f"{county_name}: {county_percentage:.1f}% ({county_vote_count:,})\n")
+
+    ```
+    
+    Finally, still within the `for` loop, the statement to print the `county_name`, `county_percentage`, and `county_vote_count` was set equal to the variable `county_results`. Upon each loop, the `county_results` were printed to both the terminal and the election analysis text file.
+    
+    ```Python
+          county_results = (f"{county_name}: {county_percentage:.1f}% ({county_vote_count:,})\n")
 
           # Print the county results to the terminal.
           print(county_results)
-
+          
           # Save the county votes to a text file.
           txt_file.write(county_results)
     ```
@@ -150,7 +155,42 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   
 * **The county with the largest number of votes was Denver.**
   
-  To determine which county had the largest number of votes,...
+  To determine which county had the largest number of votes, first, the following three variables were initialized outside of the `for` loop:
+  
+    ```Python
+    # Track the largest county and county voter turnout.
+    largest_county_turnout = ""
+    largest_county_votes = 0
+    largest_county_percentage = 0
+    ```
+    1. `largest_county_turnout` was initialized as an empty string to later represent the name of the county with the largest number of votes.
+    2. `largest_county_votes` was set to zero to later represent the total number of votes of the county with the largest voter turnout.
+    3. `largest_county_percentage` was set to zero to later represent the percentage of total votes of the county with the largest voter turnout.
+
+    
+  Back inside of the `for` loop to get each `county_name` from the `county_votes` dictionary, an `if` statement was added. Upon each loop, the `if` statement checked if `county_vote_count` was greater than the `largest_county_votes` *and* the `county_percentage` was greater than the `largest_county_percentage`. If both conditions were `true`, the `largest_county_votes` was set equal to the `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
+  
+    ```Python
+    # If statement to determine the winning county and get its vote count.
+    if (county_vote_count > largest_county_votes) and (county_percentage > largest_county_percentage):
+      largest_county_votes = county_vote_count
+      largest_county_turnout = county_name
+      largest_county_percentage = county_percentage
+    ```
+
+  Outside of the `for` loop, the statement to print the `largest_county_turnout` was set equal to the variable `largest_county_turnout_summary`, which was printed to both the terminal and the election analysis text file.
+  
+    ```Python
+    # Print the county with the largest turnout to the terminal.
+    largest_county_turnout_summary = (
+        f"\n-------------------------\n"
+        f"Largest County Turnout: {largest_county_turnout}\n"
+        f"-------------------------\n")
+    print(largest_county_turnout_summary)
+
+    # Save the county with the largest turnout to a text file.
+    txt_file.write(largest_county_turnout_summary)
+    ```
 
 * **Provide a breakdown of the number of votes and the percentage of the total votes each candidate received.**
 * **Which candidate won the election, what was their vote count, and what was their percentage of the total votes?**
