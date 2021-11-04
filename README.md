@@ -163,9 +163,9 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     largest_county_votes = 0
     largest_county_percentage = 0
     ```
-    1. `largest_county_turnout` was initialized as an empty string to later represent the name of the county with the largest number of votes.
-    2. `largest_county_votes` was set to zero to later represent the total number of votes of the county with the largest voter turnout.
-    3. `largest_county_percentage` was set to zero to later represent the percentage of total votes of the county with the largest voter turnout.
+    - `largest_county_turnout` was initialized as an empty string to later represent the name of the county with the largest number of votes.
+    - `largest_county_votes` was set to zero to later represent the total number of votes of the county with the largest voter turnout.
+    - `largest_county_percentage` was set to zero to later represent the percentage of total votes of the county with the largest voter turnout.
 
     
   Back inside of the `for` loop to get each `county_name` from the `county_votes` dictionary, an `if` statement was added. Upon each loop, the `if` statement checked if `county_vote_count` was greater than the `largest_county_votes` *and* the `county_percentage` was greater than the `largest_county_percentage`. If both conditions were `true`, the `largest_county_votes` was set equal to the `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
