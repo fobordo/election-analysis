@@ -76,7 +76,7 @@ Once these dependencies and variables were established, we obtained the results 
       txt_file.write(election_results)
     ```
   
-  As a result, `total_votes` was printed onto the election analysis text file, along with the "Election Results" title and "County Votes" header:
+  The resulting election analysis text file now included the "Election Results," "Total Votes," and "County Votes" headers, and the `total_votes`:
   
     ```
     Election Results
