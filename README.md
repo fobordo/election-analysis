@@ -66,7 +66,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   * **Denver: 82.8% (306,055 votes)**
   * **Arapahoe: 6.7% (24,801 votes)**
   
-  To determimne the number of votes and the percentage of total votes for each county in the precint, first, the variable `county_list` was initialized as an empty list to later store county names, and `county_votes` was initialized as an empty dictionary to later store the total number of votes per county. 
+  To determine the number of votes and the percentage of total votes for each county in the precint, first, the variable `county_list` was initialized as an empty list to later store county names, and `county_votes` was initialized as an empty dictionary to later store the total number of votes per county. 
 
     ```Python
     # Create a county list and county votes dictionary.
