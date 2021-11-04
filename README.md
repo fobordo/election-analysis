@@ -40,7 +40,7 @@ Once these dependencies and variables were established, we obtained the results 
     total_votes = 0
     ```
  
-  Using the `with` statement and `open()` function on `file_to_load`, `election_data.csv` was opened and stored in the variable `election_data`. Then, the `csv` module was used with the `reader` function to read `election_data.csv`, and stored in the variable `reader`.
+  Using the `with` statement and `open()` function on `file_to_load`, `election_data.csv` was opened and stored in the variable `election_data`. Then, the `csv` module was used with the `reader` function to read `election_data`, and stored in the variable `reader`.
   
     ```Python
     # Read the csv and convert it into a list of dictionaries
