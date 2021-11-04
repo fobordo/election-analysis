@@ -8,25 +8,25 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
 The Election Audit was analyzed by first adding dependencies to the script to increase the functional programming of the code. Using the `import` statement, the Python's built-in `csv` module was imported so the script could pull in data from the external election results CSV file and perform operations on it. The `import` statement was also used to import the `os` module, which was necessary to interact with the operating system. 
   
-  ```Python
-  # Add our dependencies.
-  import csv
-  import os
-  ```
+```Python
+# Add our dependencies.
+import csv
+import os
+```
 
 To load `election_data.csv`, chaining was used to connect the `os.path` submodule, which allows the user to access files on different operating systems, like macOS and Windows, with the `join()` function, which joins the file path components together and returns a direct path. Within the parantheses of the `join()` function, the name of the folder that contained `election_data.csv`, "Resources", and the name of the election results CSV file, "election_results.csv", were added. The `os.path.join("Resources", "election_results.csv")` expression was stored in the `file_to_load` variable.
 
-  ```Python
-  # Add a variable to load a file from a path.
-  file_to_load = os.path.join("Resources", "election_results.csv")
-  ```
+```Python
+# Add a variable to load a file from a path.
+file_to_load = os.path.join("Resources", "election_results.csv")
+```
 
 It was determined that the election analysis data would be written to the text file named "election_analysis.txt," which was located in the "analysis" folder. As such, the `os.path.join("analysis", "election_analysis.txt")` expression was stored in the variable `file_to_save`, which would later be used to indicate where to write the election analysis data.
 
-  ```Python
-  # Add a variable to save the file to a path.
-  file_to_save = os.path.join("analysis", "election_analysis.txt")
-  ```
+```Python
+# Add a variable to save the file to a path.
+file_to_save = os.path.join("analysis", "election_analysis.txt")
+```
   
 Once these dependencies and variables were established, we obtained the results of the Election Audit. 
 
@@ -36,40 +36,40 @@ Once these dependencies and variables were established, we obtained the results 
   
   To determine the total number of votes cast in this election, first, the variable `total_votes` was initialized and set to equal zero.
     
-    ```
-    total_votes = 0
-    ```
+  ```
+  total_votes = 0
+  ```
  
   Using the `with` statement and `open()` function on `file_to_load`, `election_data.csv` was opened and stored in the variable `election_data`. Then, the `csv` module was used with the `reader` function to read `election_data`, and stored in the variable `reader`.
   
-    ```Python
-    # Read the csv and convert it into a list of dictionaries
-    with open(file_to_load) as election_data:
-      reader = csv.reader(election_data)
-    ```
+  ```Python
+  # Read the csv and convert it into a list of dictionaries
+  with open(file_to_load) as election_data:
+    reader = csv.reader(election_data)
+  ```
   
   The `next()` method was used on `reader` to skip the header/first row of the CSV file since the column headers were not needed, and stored in the variable `header`.
     
-    ```Python
-      # Read the header
-      header = next(reader)
-   ```
+  ```Python
+    # Read the header
+    header = next(reader)
+  ```
    
   Then, a `for` loop was written to loop through each row in `reader` and increment the total vote count in `total_votes` by 1 after each loop.
      
-   ```Python
-      # For each row in the CSV file.
-      for row in reader:
+ ```Python
+    # For each row in the CSV file.
+    for row in reader:
 
-          # Add to the total vote count
-          total_votes += 1
-    ```
+      # Add to the total vote count
+      total_votes += 1
+ ```
     
-  Using the `with` statement and `open()` function on `file_to_save`, `election_analysis.txt` was opened and stored in the variable `txt_file`.
+  Outside of the `for` loop, the `with` statement and `open()` function on `file_to_save` were used to open `election_analysis.txt`, and stored in the variable `txt_file`.
     
-    ```Python
-    with open(file_to_save, "w") as txt_file:
-    ```
+  ```Python
+  with open(file_to_save, "w") as txt_file:
+  ```
   
   Within the `with` statement, the statement to print the "Election Results," "Total Votes," and "County Votes" headers, along with the `total_votes` was stored in the variable `election_results`, and printed to both the terminal and `txt_file`.
   
@@ -90,14 +90,14 @@ Once these dependencies and variables were established, we obtained the results 
   
   The resulting election analysis text file, `election_analysis.txt`, now included the "Election Results," "Total Votes," and "County Votes" headers, and the `total_votes`:
   
-    ```
-    Election Results
-    -------------------------
-    Total Votes: 369,711
-    -------------------------
+  ```
+  Election Results
+  -------------------------
+  Total Votes: 369,711
+  -------------------------
 
-    County Votes:
-    ```
+  County Votes:
+  ```
   
 * **A breakdown of the number of votes and the percentage of total votes for each county in the precinct were as follows:**
   * **Jefferson: 10.5% (38,855 votes)**
@@ -106,21 +106,21 @@ Once these dependencies and variables were established, we obtained the results 
   
   To determine the number of votes and the percentage of total votes for each county in the precint, first, the variable `county_list` was initialized as an empty list to later store county names, and `county_votes` was initialized as an empty dictionary to later store the total number of votes per county. 
 
-    ```Python
-    # Create a county list and county votes dictionary.
-    county_list = []
-    county_votes = {}
-    ```
+  ```Python
+  # Create a county list and county votes dictionary.
+  county_list = []
+  county_votes = {}
+  ```
   
   Then, within the `with` statement,
   
   ```Python
   with open(file_to_load) as election_data:
-  reader = csv.reader(election_data)
+    reader = csv.reader(election_data)
 
-  # Read the header
-  header = next(reader)
-  ```
+    # Read the header
+    header = next(reader)
+    ```
   
   a `for` loop was written to loop through each row in `reader` and extract the county name from the appropriate index, which in this case was "1" because county names were located in Column 2 of the CSV file. The extracted county name was then stored in the variable `county_name`.
   
@@ -186,53 +186,53 @@ Once these dependencies and variables were established, we obtained the results 
   
   The resulting election analysis text file, `election_analysis.txt`, now included the results for each county:
    
-    ```
-    Election Results
-    -------------------------
-    Total Votes: 369,711
-    -------------------------
+  ```
+  Election Results
+  -------------------------
+  Total Votes: 369,711
+  -------------------------
 
-    County Votes:
-    Jefferson: 10.5% (38,855)
-    Denver: 82.8% (306,055)
-    Arapahoe: 6.7% (24,801)
-    ```
+  County Votes:
+  Jefferson: 10.5% (38,855)
+  Denver: 82.8% (306,055)
+  Arapahoe: 6.7% (24,801)
+  ```
   
 * **The county with the largest number of votes was Denver.**
   
   To determine which county had the largest number of votes, first, the following three variables were initialized:
   
-    ```Python
-    # Track the largest county and county voter turnout.
-    largest_county_turnout = ""
-    largest_county_votes = 0
-    largest_county_percentage = 0
-    ```
-    - `largest_county_turnout` was initialized as an empty string to later represent the name of the county with the largest number of votes.
-    - `largest_county_votes` was set to zero to later represent the total number of votes of the county with the largest voter turnout.
-    - `largest_county_percentage` was set to zero to later represent the percentage of total votes of the county with the largest voter turnout.
+  ```Python
+  # Track the largest county and county voter turnout.
+  largest_county_turnout = ""
+  largest_county_votes = 0
+  largest_county_percentage = 0
+  ```
+  - `largest_county_turnout` was initialized as an empty string to later represent the name of the county with the largest number of votes.
+  - `largest_county_votes` was set to zero to later represent the total number of votes of the county with the largest voter turnout.
+  - `largest_county_percentage` was set to zero to later represent the percentage of total votes of the county with the largest voter turnout.
 
-   Then, within the `with` statement,
+  Then, within the `with` statement,
   
-    ```Python
-    with open(file_to_save, "w") as txt_file:
-    ```
+  ```Python
+  with open(file_to_save, "w") as txt_file:
+  ```
    
-   and inside of the `for` loop to get each `county_name` from the `county_votes` dictionary, 
+  and inside of the `for` loop to get each `county_name` from the `county_votes` dictionary, 
   
     ```Python
-      # For loop to get the county from the county dictionary.
-      for county_name in county_votes:
+    # For loop to get the county from the county dictionary.
+    for county_name in county_votes:
     ```
   
    an `if` statement was added. Upon each loop, the `if` statement checked if `county_vote_count` was greater than `largest_county_votes` *and* `county_percentage` was greater than `largest_county_percentage`. If both conditions were `true`, the `largest_county_votes` was set equal to the `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
   
     ```Python
-        # If statement to determine the winning county and get its vote count.
-        if (county_vote_count > largest_county_votes) and (county_percentage > largest_county_percentage):
-          largest_county_votes = county_vote_count
-          largest_county_turnout = county_name
-          largest_county_percentage = county_percentage
+      # If statement to determine the winning county and get its vote count.
+      if (county_vote_count > largest_county_votes) and (county_percentage > largest_county_percentage):
+        largest_county_votes = county_vote_count
+        largest_county_turnout = county_name
+        largest_county_percentage = county_percentage
     ```
 
   Outside of the `for` loop, the statement to print the `largest_county_turnout` was stored in the variable `largest_county_turnout_summary`, which was printed to both the terminal and `txt_file`.
@@ -252,21 +252,21 @@ Once these dependencies and variables were established, we obtained the results 
     
   The resulting election analysis text file, `election_analysis.txt`, now included the county with the largest voter turnout:
     
-    ```
-    Election Results
-    -------------------------
-    Total Votes: 369,711
-    -------------------------
+  ```
+  Election Results
+  -------------------------
+  Total Votes: 369,711
+  -------------------------
 
-    County Votes:
-    Jefferson: 10.5% (38,855)
-    Denver: 82.8% (306,055)
-    Arapahoe: 6.7% (24,801)
+  County Votes:
+  Jefferson: 10.5% (38,855)
+  Denver: 82.8% (306,055)
+  Arapahoe: 6.7% (24,801)
 
-    -------------------------
-    Largest County Turnout: Denver
-    -------------------------
-    ```
+  -------------------------
+  Largest County Turnout: Denver
+  -------------------------
+  ```
 
 * **A breakdown of the number of votes and the percentage of the total votes each candidate received were as follows:**
   * Charles Casper Stockham: 23.0% (85,213 votes)
@@ -275,11 +275,11 @@ Once these dependencies and variables were established, we obtained the results 
 
   To determine the number of votes and the percentage of the total votes each candidate received, first, the variable `candidate_options` was initialized as an empty list to later store candidate names, and `candidate_votes` was initialized as an empty dictionary to later store the total number of votes per candidate. 
 
-    ```Python
-    # Candidate Options and candidate votes.
-    candidate_options = []
-    candidate_votes = {}
-    ```
+  ```Python
+  # Candidate Options and candidate votes.
+  candidate_options = []
+  candidate_votes = {}
+  ```
   
   Then, within the `with` statement,
   
@@ -353,24 +353,24 @@ Once these dependencies and variables were established, we obtained the results 
   
   The resulting election analysis text file, `election_analysis.txt`, now included the results for each candidate:
    
-    ```
-    Election Results
-    -------------------------
-    Total Votes: 369,711
-    -------------------------
+  ```
+  Election Results
+  -------------------------
+  Total Votes: 369,711
+  -------------------------
 
-    County Votes:
-    Jefferson: 10.5% (38,855)
-    Denver: 82.8% (306,055)
-    Arapahoe: 6.7% (24,801)
+  County Votes:
+  Jefferson: 10.5% (38,855)
+  Denver: 82.8% (306,055)
+  Arapahoe: 6.7% (24,801)
 
-    -------------------------
-    Largest County Turnout: Denver
-    -------------------------
-    Charles Casper Stockham: 23.0% (85,213)
-    Diana DeGette: 73.8% (272,892)
-    Raymon Anthony Doane: 3.1% (11,606)
-    ```
+  -------------------------
+  Largest County Turnout: Denver
+  -------------------------
+  Charles Casper Stockham: 23.0% (85,213)
+  Diana DeGette: 73.8% (272,892)
+  Raymon Anthony Doane: 3.1% (11,606)
+  ```
 
 * **Diana DeGette won the election with a vote count of 272,892 votes, which was 73.8% of the total votes.**
   
@@ -427,29 +427,29 @@ Once these dependencies and variables were established, we obtained the results 
     ```
   The resulting election analysis text file, `election_analysis.txt` now included the county with the winning candidate summary:
     
-    ```
-    Election Results
-    -------------------------
-    Total Votes: 369,711
-    -------------------------
+  ```
+  Election Results
+  -------------------------
+  Total Votes: 369,711
+  -------------------------
 
-    County Votes:
-    Jefferson: 10.5% (38,855)
-    Denver: 82.8% (306,055)
-    Arapahoe: 6.7% (24,801)
+  County Votes:
+  Jefferson: 10.5% (38,855)
+  Denver: 82.8% (306,055)
+  Arapahoe: 6.7% (24,801)
 
-    -------------------------
-    Largest County Turnout: Denver
-    -------------------------
-    Charles Casper Stockham: 23.0% (85,213)
-    Diana DeGette: 73.8% (272,892)
-    Raymon Anthony Doane: 3.1% (11,606)
-    -------------------------
-    Winner: Diana DeGette
-    Winning Vote Count: 272,892
-    Winning Percentage: 73.8%
-    -------------------------
-    ```
+  -------------------------
+  Largest County Turnout: Denver
+  -------------------------
+  Charles Casper Stockham: 23.0% (85,213)
+  Diana DeGette: 73.8% (272,892)
+  Raymon Anthony Doane: 3.1% (11,606)
+  -------------------------
+  Winner: Diana DeGette
+  Winning Vote Count: 272,892
+  Winning Percentage: 73.8%
+  -------------------------
+  ```
 
 ## Election-Audit Summary:
 The Election Audit script can easily be used for any election, with a few modifications. Below are a few examples of modifications that must be made for the analysis of other elections:
