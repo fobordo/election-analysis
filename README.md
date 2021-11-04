@@ -46,10 +46,15 @@ Once these dependencies and variables were established, we obtained the results 
     # Read the csv and convert it into a list of dictionaries
     with open(file_to_load) as election_data:
       reader = csv.reader(election_data)
-
+    ```
+  
+  The `next()` method was used on `reader` to skip the header/first row of the CSV file since the column headers were not needed, and stored in the variable `header`.
+    
+    ```Python
       # Read the header
       header = next(reader)
    ```
+   
   Then, a `for` loop was written to loop through each row in `election_data.csv` and increment the total vote count in `total_votes` by 1 after each       loop.
      
    ```Python
@@ -59,6 +64,7 @@ Once these dependencies and variables were established, we obtained the results 
           # Add to the total vote count
           total_votes += 1
     ```
+    
   Using the `with` statement and `open()` function on `file_to_save`, `election_analysis.txt` was opened and stored in the variable `txt_file`.
     
     ```Python
