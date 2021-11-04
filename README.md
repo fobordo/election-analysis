@@ -89,7 +89,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   
   An `if` statement was nested inside of the `for` loop to check if `county_name` was added to the `county_list` yet. If `not`, the `county_name` would be added to `county_list`, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
   
-      ```Python
+    ```Python
       # If statement that checks that the county does not match any existing county in the county list.
       if county_name not in county_list:
 
@@ -98,7 +98,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
         # Begin tracking the county's vote count.
         county_votes[county_name] = 0
-      ```
+    ```
   
   Outside of the `if` statement, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the `for` loop.
   
@@ -123,7 +123,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     
     Finally, still within the `for` loop, the statement to print the `county_name`, `county_percentage`, and `county_vote_count` was stored in the variable `county_results`. Upon each loop, the `county_results` statement was printed to both the terminal and the election analysis text file.
     
-      ```Python
+    ```Python
       county_results = (f"{county_name}: {county_percentage:.1f}% ({county_vote_count:,})\n")
 
       # Print the county results to the terminal.
@@ -131,7 +131,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
       # Save the county votes to a text file.
       txt_file.write(county_results)
-      ```
+    ```
   
   The resulting election analysis text file now included the results for each county:
    
@@ -236,7 +236,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   
   An `if` statement was nested inside of the `for` loop to check if the `candidate_name` was added to the `candidate_options` list yet. If `not`, the `candidate_name` would be added to `candidate_options`, and the number of votes for that candidate would begin to be tracked within the `candidate_votes` dictionary.
   
-      ```python
+    ```Python
       # If the candidate does not match any existing candidate add it to the candidate list
       if candidate_name not in candidate_options:
 
@@ -245,14 +245,14 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
         # Begin tracking that candidate's voter count.
         candidate_votes[candidate_name] = 0
-      ```
+    ```
   
   Outside of the `if` statement, the `candidate_votes` dictionary was set to increment the number of votes for the current `candidate_name` by 1 for each row in the `for` loop.
   
-      ```Python
+    ```Python
       # Add a vote to that candidate's count
       candidate_votes[candidate_name] += 1
-      ```
+    ```
   
   Once the `for` loop finished looping through all the rows in the election results CSV file, a new `for` loop was written. The new `for` loop would loop through each `candidate_name` in the `candidate_votes` dictionary, and `get` the corresponding total votes for that candidate, which was stored in the variable `votes`. Then, the percentage of total votes for that candidate was calculated and stored in the variable `vote_percentage`.
   
@@ -266,7 +266,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     
     Finally, still within the `for` loop, the statement to print the `candidate_name`, `vote_percentage`, and `votes` was set equal to the variable `candidate_results`. Upon each loop, the `candidate_results` statement was printed to both the terminal and the election analysis text file.
     
-      ```Python
+    ```Python
       candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
 
       # Print each candidate's voter count and percentage to the terminal.
@@ -274,7 +274,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
       
       #  Save the candidate results to our text file.
       txt_file.write(candidate_results)
-      ```
+    ```
   
   The resulting election analysis text file now included the results for each candidate:
    
@@ -321,13 +321,13 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
   
   Upon each loop, the `if` statement checked if `votes` was greater than `winning_count` *and* `vote_percentage` was greater than `winning_percentage`. If both conditions were `true`, `winning_count` was set equal to `votes`, `winning_candidate` equal to `candidate_name`, and `winning_percentage` equal to `vote_percentage`.
   
-      ```Python
+    ```Python
       # Determine winning vote count, winning percentage, and candidate.
       if (votes > winning_count) and (vote_percentage > winning_percentage):
         winning_count = votes
         winning_candidate = candidate_name
         winning_percentage = vote_percentage
-      ```
+    ```
 
   Outside of the `for` loop, the statement to print the `winning_candidate`, `winning_count`, and `winning_percentage` was stored in the variable `winning_candidate_summary`, which was printed to both the terminal and the election analysis text file.
   
