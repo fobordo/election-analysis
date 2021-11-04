@@ -6,7 +6,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
 
 ## Election-Audit Results
 
-### * A total of 369,711 votes were cast in this congressional election.
+* **A total of 369,711 votes were cast in this congressional election.**
   
   To determine the total number of votes cast in this election, first, the variable `total_votes` was initialized and set to equal zero.
     
@@ -14,7 +14,8 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     total_votes = 0
     ```
  
-  ***Include text for opening election results csv***
+  ***Include text for opening election results csv**
+  
     ```Python
     # Read the csv and convert it into a list of dictionaries
     with open(file_to_load) as election_data:
@@ -64,7 +65,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     County Votes:
     ```
   
-### * A breakdown of the number of votes and the percentage of total votes for each county in the precinct were as follows:
+* **A breakdown of the number of votes and the percentage of total votes for each county in the precinct were as follows:**
   * **Jefferson: 10.5% (38,855 votes)**
   * **Denver: 82.8% (306,055 votes)**
   * **Arapahoe: 6.7% (24,801 votes)**
@@ -147,7 +148,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     Arapahoe: 6.7% (24,801)
     ```
   
-### * The county with the largest number of votes was Denver.
+* **The county with the largest number of votes was Denver.**
   
   To determine which county had the largest number of votes, first, the following three variables were initialized:
   
@@ -211,12 +212,12 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     -------------------------
     ```
 
-### * A breakdown of the number of votes and the percentage of the total votes each candidate received were as follows:
+* **A breakdown of the number of votes and the percentage of the total votes each candidate received were as follows:**
   * Charles Casper Stockham: 23.0% (85,213 votes)
   * Diana DeGette: 73.8% (272,892 votes)
   * Raymon Anthony Doane: 3.1% (11,606 votes)
 
-  To determimne the number of votes and the percentage of the total votes each candidate received, first, the variable `candidate_options` was initialized as an empty list to later store candidate names, and `candidate_votes` was initialized as an empty dictionary to later store the total number of votes per candidate. 
+  To determine the number of votes and the percentage of the total votes each candidate received, first, the variable `candidate_options` was initialized as an empty list to later store candidate names, and `candidate_votes` was initialized as an empty dictionary to later store the total number of votes per candidate. 
 
     ```Python
     # Candidate Options and candidate votes.
@@ -297,7 +298,7 @@ The purpose of the Election Audit was to aid the Colorado Board of Elections Com
     Raymon Anthony Doane: 3.1% (11,606)
     ```
 
-### * Diana DeGette won the election with a vote count of 272,892 votes, which was 73.8% of the total votes.
+* **Diana DeGette won the election with a vote count of 272,892 votes, which was 73.8% of the total votes.**
   
   To determine which candidate won the election, their vote count, and their percentage of the total votes, first, the following three variables were initialized:
   
