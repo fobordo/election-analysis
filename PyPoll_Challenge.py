@@ -20,8 +20,6 @@ candidate_votes = {}
 
 # 1: Create a county list and county votes dictionary.
 county_list = []
-
-# county_votes = {county : votes cast for each county}
 county_votes = {}
 
 # Track the winning candidate, vote count and percentage
@@ -53,8 +51,7 @@ with open(file_to_load) as election_data:
         # 3: Extract the county name from each row.
         county_name = row[1]
 
-        # If the candidate does not match any existing candidate add it to
-        # the candidate list
+        # If the candidate does not match any existing candidate add it to the candidate list
         if candidate_name not in candidate_options:
 
             # Add the candidate name to the candidate list.
@@ -66,8 +63,7 @@ with open(file_to_load) as election_data:
         # Add a vote to that candidate's count
         candidate_votes[candidate_name] += 1
 
-        # 4a: Write an if statement that checks that the
-        # county does not match any existing county in the county list.
+        # 4a: Write an if statement that checks that the county does not match any existing county in the county list.
         if county_name not in county_list:
 
             # 4b: Add the existing county to the list of counties.
@@ -102,8 +98,8 @@ with open(file_to_save, "w") as txt_file:
 
         # 6c: Calculate the percentage of votes for the county.
         county_percentage = float(county_vote_count) / float(total_votes) * 100
-        county_results = (
-            f"{county_name}: {county_percentage:.1f}% ({county_vote_count:,})\n")
+
+        county_results = (f"{county_name}: {county_percentage:.1f}% ({county_vote_count:,})\n")
 
         # 6d: Print the county results to the terminal.
         print(county_results)
@@ -133,12 +129,11 @@ with open(file_to_save, "w") as txt_file:
         # Retrieve vote count and percentage
         votes = candidate_votes.get(candidate_name)
         vote_percentage = float(votes) / float(total_votes) * 100
-        candidate_results = (
-            f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        candidate_results = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
 
-        # Print each candidate's voter count and percentage to the
-        # terminal.
+        # Print each candidate's voter count and percentage to the terminal.
         print(candidate_results)
+        
         #  Save the candidate results to our text file.
         txt_file.write(candidate_results)
 
