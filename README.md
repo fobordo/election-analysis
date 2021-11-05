@@ -65,7 +65,7 @@ Once these dependencies and variables were established, we obtained the results 
       total_votes += 1
   ```
     
-  Outside of the `for` loop, the `with` statement and `open()` function on `file_to_save` were used to open `election_analysis.txt`, and stored in the variable `txt_file`.
+  Outside of the `for` loop and `with` statement, another `with` statement was written to save the results to a text file. The new `with` statement and `open()` function on `file_to_save` were used to open `election_analysis.txt`, and stored in the variable `txt_file`.
     
   ```Python
   with open(file_to_save, "w") as txt_file:
