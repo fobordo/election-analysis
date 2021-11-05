@@ -14,7 +14,7 @@ import csv
 import os
 ```
 
-To load `election_data.csv`, chaining was used to connect the `os.path` submodule, which allows the user to access files on different operating systems, like macOS and Windows, with the `join()` function, which joins the file path components together and returns a direct path. Within the parantheses of the `join()` function, the name of the folder that contained `election_data.csv`, "Resources", and the name of the election results CSV file, "election_results.csv", were added. The `os.path.join("Resources", "election_results.csv")` expression was stored in the `file_to_load` variable.
+To load `election_results.csv`, chaining was used to connect the `os.path` submodule, which allows the user to access files on different operating systems, like macOS and Windows, with the `join()` function, which joins the file path components together and returns a direct path. Within the parantheses of the `join()` function, the name of the folder that contained `election_results.csv`, "Resources", and the name of the election results CSV file, "election_results.csv", were added. The `os.path.join("Resources", "election_results.csv")` expression was stored in the `file_to_load` variable.
 
 ```Python
 # Add a variable to load a file from a path.
@@ -40,7 +40,7 @@ Once these dependencies and variables were established, we obtained the results 
   total_votes = 0
   ```
  
-  Using the `with` statement and `open()` function on `file_to_load`, `election_data.csv` was opened and stored in the variable `election_data`. Then, the `csv` module was used with the `reader` function to read `election_data`, and stored in the variable `reader`.
+  Using the `with` statement and `open()` function on `file_to_load`, `election_results.csv` was opened and stored in the variable `election_data`. Then, the `csv` module was used with the `reader` function to read `election_data`, and stored in the variable `reader`.
   
   ```Python
   # Read the csv and convert it into a list of dictionaries
@@ -65,7 +65,7 @@ Once these dependencies and variables were established, we obtained the results 
       total_votes += 1
   ```
     
-  Outside of the `for` loop and `with` statement, another `with` statement was written to save the results to a text file. The new `with` statement and `open()` function on `file_to_save` were used to open `election_analysis.txt`, and stored in the variable `txt_file`.
+  Outside of the `for` loop and `with` statement, another `with` statement was written to open and save the results to the text file `election_analysis.txt`. Using the `with` statement and `open()` function on `file_to_save`, `election_analysis.txt` was opened, and stored in the variable `txt_file`.
     
   ```Python
   with open(file_to_save, "w") as txt_file:
@@ -88,7 +88,7 @@ Once these dependencies and variables were established, we obtained the results 
       txt_file.write(election_results)
     ```
   
-  The resulting election analysis text file, `election_analysis.txt`, now included the "Election Results," "Total Votes," and "County Votes" headers, and the `total_votes`:
+  The election analysis text file, `election_analysis.txt`, now included the "Election Results," "Total Votes," and "County Votes" headers, and the `total_votes`:
   
   ```
   Election Results
@@ -112,7 +112,7 @@ Once these dependencies and variables were established, we obtained the results 
   county_votes = {}
   ```
   
-  Then, within the `with` statement,
+  Then, within the `with` statement to open and read the `election_results.csv` file,
   
   ```Python
   with open(file_to_load) as election_data:
@@ -132,7 +132,7 @@ Once these dependencies and variables were established, we obtained the results 
       county_name = row[1]
   ```
   
-  An `if` statement was nested inside of the `for` loop to check if `county_name` was added to the `county_list` yet. If `not`, the `county_name` would be added to `county_list`, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
+  An `if` statement was nested inside of the `for` loop to check if `county_name` was added to the `county_list` yet. If `county_name` was `not in` `county_list`, the `county_name` would be added to `county_list` with the `append()` method, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
   
   ```Python
       # If statement that checks that the county does not match any existing county in the county list.
@@ -145,21 +145,21 @@ Once these dependencies and variables were established, we obtained the results 
         county_votes[county_name] = 0
   ```
   
-  Outside of the `if` statement, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the `for` loop.
+  Outside of the `if` statement but still within the `for` loop, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the `for` loop.
   
   ```Python
     # Add a vote to current county's vote count.
     county_votes[county_name] += 1
-    ```
+  ```
   
-  Once the `for` loop finished looping through all the rows in `reader`, a new `for` loop was written within the `with` statement,
+  Then, within the `with` statement to open and save results to `election_analysis.txt`,
   
   ```Python
   # Save the results to our text file.
   with open(file_to_save, "w") as txt_file:
   ```
   
-  The new `for` loop would loop through each `county_name` in the `county_votes` dictionary, and `get` the corresponding total votes for that county, which was stored in the variable `county_vote_count`. Then, the percentage of total votes for that county was calculated and stored in the variable `county_percentage`.
+  a `for` loop was written to loop through each `county_name` in the `county_votes` dictionary, and `get` the corresponding total votes for that county, which was stored in the variable `county_vote_count`. Then, the percentage of total votes for that county was calculated and stored in the variable `county_percentage`.
   
   ```Python
     # For loop to get the county from the county dictionary.
@@ -172,7 +172,7 @@ Once these dependencies and variables were established, we obtained the results 
       county_percentage = float(county_vote_count) / float(total_votes) * 100
   ```
     
-    Finally, still within the `for` loop, the statement to print the `county_name`, `county_percentage`, and `county_vote_count` was stored in the variable `county_results`. Upon each loop, the `county_results` statement was printed to both the terminal and `txt_file`.
+  Finally, still within the `for` loop, the statement to print the `county_name`, `county_percentage`, and `county_vote_count` was stored in the variable `county_results`. Upon each loop, the `county_results` statement was printed to both the terminal and `txt_file`.
     
   ```Python
       county_results = (f"{county_name}: {county_percentage:.1f}% ({county_vote_count:,})\n")
@@ -184,7 +184,7 @@ Once these dependencies and variables were established, we obtained the results 
       txt_file.write(county_results)
   ```
   
-  The resulting election analysis text file, `election_analysis.txt`, now included the results for each county:
+  The election analysis text file, `election_analysis.txt`, now included the results for each county:
    
   ```
   Election Results
@@ -212,7 +212,7 @@ Once these dependencies and variables were established, we obtained the results 
   - `largest_county_votes` was set to zero to later represent the total number of votes of the county with the largest voter turnout.
   - `largest_county_percentage` was set to zero to later represent the percentage of total votes of the county with the largest voter turnout.
 
-  Then, within the `with` statement,
+  Then, within the `with` statement to open and save results to `election_analysis.txt`,
   
   ```Python
   with open(file_to_save, "w") as txt_file:
@@ -225,7 +225,7 @@ Once these dependencies and variables were established, we obtained the results 
     for county_name in county_votes:
   ```
   
-   an `if` statement was added. Upon each loop, the `if` statement checked if `county_vote_count` was greater than `largest_county_votes` *and* `county_percentage` was greater than `largest_county_percentage`. If both conditions were `true`, the `largest_county_votes` was set equal to the `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
+   an `if` statement was added. Upon each loop, the `if` statement checked if the current county's votes, `county_vote_count`, was greater than `largest_county_votes` *and* the current county's vote percentage, `county_percentage`, was greater than `largest_county_percentage`. If both conditions were `true`, `largest_county_votes` was set equal to `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
   
   ```Python
       # If statement to determine the winning county and get its vote count.
@@ -250,7 +250,7 @@ Once these dependencies and variables were established, we obtained the results 
     txt_file.write(largest_county_turnout_summary)
   ```
     
-  The resulting election analysis text file, `election_analysis.txt`, now included the county with the largest voter turnout:
+  The election analysis text file, `election_analysis.txt`, now included the county with the largest voter turnout:
     
   ```
   Election Results
@@ -281,7 +281,7 @@ Once these dependencies and variables were established, we obtained the results 
   candidate_votes = {}
   ```
   
-  Then, within the `with` statement,
+  Then, within the `with` statement to open and read the `election_results.csv` file,
   
   ```Python
   # Read the csv and convert it into a list of dictionaries
@@ -302,7 +302,7 @@ Once these dependencies and variables were established, we obtained the results 
       candidate_name = row[2]
   ```
   
-  An `if` statement was nested inside of the `for` loop to check if the `candidate_name` was added to the `candidate_options` list yet. If `not`, the `candidate_name` would be added to `candidate_options`, and the number of votes for that candidate would begin to be tracked within the `candidate_votes` dictionary.
+  An `if` statement was nested inside of the `for` loop to check if the `candidate_name` was added to the `candidate_options` list yet. If the `candidate_name` was `not in` `candidate_options`, the `candidate_name` would be added to `candidate_options` with the `append()` method, and the number of votes for that candidate would begin to be tracked within the `candidate_votes` dictionary.
   
   ```Python
       # If the candidate does not match any existing candidate add it to the candidate list
@@ -315,21 +315,21 @@ Once these dependencies and variables were established, we obtained the results 
         candidate_votes[candidate_name] = 0
   ```
   
-  Outside of the `if` statement, the `candidate_votes` dictionary was set to increment the number of votes for the current `candidate_name` by 1 for each row in the `for` loop.
+  Outside of the `if` statement but still within the `for` loop, the `candidate_votes` dictionary was set to increment the number of votes for the current `candidate_name` by 1 for each row in the loop.
   
   ```Python
       # Add a vote to that candidate's count
       candidate_votes[candidate_name] += 1
   ```
   
-  Once the `for` loop finished looping through all the rows in `reader`, a new `for` loop was written within the `with` statement,
+  Then, within the `with` statement to open and save results to `election_analysis.txt`,
   
   ```Python
   # Save the results to our text file.
   with open(file_to_save, "w") as txt_file:
   ```
   
-  The new `for` loop would loop through each `candidate_name` in the `candidate_votes` dictionary, and `get` the corresponding total votes for that candidate, which was stored in the variable `votes`. Then, the percentage of total votes for that candidate was calculated and stored in the variable `vote_percentage`.
+  a `for` loop was written to loop through each `candidate_name` in the `candidate_votes` dictionary, and `get` the corresponding total votes for that candidate, which was stored in the variable `votes`. Then, the percentage of total votes for that candidate was calculated and stored in the variable `vote_percentage`.
   
   ```Python
     for candidate_name in candidate_votes:
@@ -351,7 +351,7 @@ Once these dependencies and variables were established, we obtained the results 
       txt_file.write(candidate_results)
   ```
   
-  The resulting election analysis text file, `election_analysis.txt`, now included the results for each candidate:
+  The election analysis text file, `election_analysis.txt`, now included the results for each candidate:
    
   ```
   Election Results
@@ -387,7 +387,7 @@ Once these dependencies and variables were established, we obtained the results 
   - `winning_count` was set to zero to later represent the total number of votes of the winning candidate.
   - `winning_percentage` was set to zero to later represent the percentage of total votes of the winning candidate.
 
-  Then, within the `with` statement,
+  Then, within the `with` statement to open and save results to `election_analysis.txt`,
   
   ```Python
   with open(file_to_save, "w") as txt_file:
@@ -399,7 +399,7 @@ Once these dependencies and variables were established, we obtained the results 
     for candidate_name in candidate_votes:
   ```
   
-  an `if` statement was added. Upon each loop, the `if` statement checked if `votes` was greater than `winning_count` *and* `vote_percentage` was greater than `winning_percentage`. If both conditions were `true`, `winning_count` was set equal to `votes`, `winning_candidate` equal to `candidate_name`, and `winning_percentage` equal to `vote_percentage`.
+  an `if` statement was added. Upon each loop, the `if` statement checked if the current candidate's total votes, `votes`, was greater than `winning_count` *and* the current candidate's percentage of votes, `vote_percentage`, was greater than `winning_percentage`. If both conditions were `true`, `winning_count` was set equal to `votes`, `winning_candidate` equal to `candidate_name`, and `winning_percentage` equal to `vote_percentage`.
   
   ```Python
       # Determine winning vote count, winning percentage, and candidate.
@@ -425,7 +425,7 @@ Once these dependencies and variables were established, we obtained the results 
     # Save the winning candidate's name to the text file
     txt_file.write(winning_candidate_summary)
   ```
-  The resulting election analysis text file, `election_analysis.txt` now included the county with the winning candidate summary:
+  The election analysis text file, `election_analysis.txt`, now included the county with the winning candidate summary:
     
   ```
   Election Results
@@ -452,39 +452,39 @@ Once these dependencies and variables were established, we obtained the results 
   ```
 
 ## Election-Audit Summary:
-The Election Audit script can easily be used for any election, with a few modifications. Below are a few examples of modifications that must be made for the analysis of other elections:
+The Election Audit script can easily be used for any election, with a few modifications. Below are a few examples of modifications that can be made for the analysis of other elections:
 
-1. If the file type of the election results file is not CSV, another built-in module will have to be imported in order to pull in data from external files and perform operations on them:
+1. If the file type of the election results file is not CSV, another built-in module can be imported in order to pull in data from external files and perform operations on them:
 
     ```Python
     import csv
     ```
   
-    * `csv` must be replaced with the appropriate Python module.
+    * `csv` can be replaced with the appropriate Python module corresponding to the new election result file's file type.
 
 
-2. The folder and file names of other election results must be changed in the `file_to_load` variable so the new data can be read from the appropriate file:
+2. The folder and file names of other election results can be changed in the `file_to_load` variable so the new data can be read from the appropriate path:
 
     ```Python
     # Add a variable to load a file from a path.
     file_to_load = os.path.join("Resources", "election_results.csv")
     ```
 
-    * `Resources` should be replaced with the folder name of the folder that contains the election results file.
-    * `election_results.csv` should be replaced with the file name of the file that contains the election results data.
+    * `Resources` can be replaced with the folder name of the folder that contains the election results file.
+    * `election_results.csv` can be replaced with the file name of the file that contains the election results data.
 
 
-3. The folder and file name of the election analysis must be changed in the `file_to_save` variable so the analysis results can be written to the appropriate file:
+3. The folder and file name of the election analysis can be changed in the `file_to_save` variable so the analysis results can be written to the appropriate file:
   
     ```Python
     file_to_save = os.path.join("analysis", "election_analysis.txt")
     ```
 
-    * `analysis` should be replaced with the folder name of the folder that contains the election analysis file.
-    * `election_analysis.txt` should be replaced with the file name of the file that the analysis results data will be written to.
+    * `analysis` can be replaced with the folder name of the folder that contains the file that the analysis results will be written to.
+    * `election_analysis.txt` can be replaced with the file name of the file that the analysis results will be written to.
 
 
-4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file must be changed to reference the appropriate columns to obtain the desired data:
+4. The index numbers that are used to retrieve data (i.e. candidate name and county name) from the election results file can be changed to reference the appropriate columns to obtain the desired data:
 
     ```Python
     # For each row in the CSV file.
@@ -497,7 +497,7 @@ The Election Audit script can easily be used for any election, with a few modifi
         county_name = row[1]
     ```
 
-    * In the `candidate_name = row[2]` expression, the number `2` should be changed to the index of the appropriate column in the election results file that contains the candidate names.
-    * In the `county_name = row[1]` expression, the number `1` should be changed to the index of the appropriate column in the election results file that contains the county names.
+    * In the `candidate_name = row[2]` expression, the number `2` can be changed to the index of the appropriate column in the election results file that contains the candidate names.
+    * In the `county_name = row[1]` expression, the number `1` can be changed to the index of the appropriate column in the election results file that contains the county names.
 
-The rest of the script may remain the same to return the same election analysis data as those that were returned from this project.
+The rest of the script may remain the same to return the same election analysis results as those that were returned from this project.
