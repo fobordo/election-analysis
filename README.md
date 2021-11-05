@@ -132,7 +132,7 @@ Once these dependencies and variables were established, we obtained the results 
       county_name = row[1]
   ```
   
-  An `if` statement was nested inside of the `for` loop to check if `county_name` was added to the `county_list` yet. If `county_name` was `not in` `county_list`, the `county_name` would be added to `county_list` with the `append()` method, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
+  An `if` statement was nested inside of the `for` loop to check if `county_name` was added to the `county_list` yet. If `county_name` was `not in` `county_list`, the `county_name` was added to `county_list` with the `append()` method, and the number of county votes for that county would begin to be tracked within the `county_votes` dictionary.
   
   ```Python
       # If statement that checks that the county does not match any existing county in the county list.
@@ -145,7 +145,7 @@ Once these dependencies and variables were established, we obtained the results 
         county_votes[county_name] = 0
   ```
   
-  Outside of the `if` statement but still within the `for` loop, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the `for` loop.
+  Outside of the `if` statement but still within the `for` loop, the `county_votes` dictionary was set to increment the number of votes for the current `county_name` by 1 for each row in the loop.
   
   ```Python
     # Add a vote to current county's vote count.
@@ -225,7 +225,7 @@ Once these dependencies and variables were established, we obtained the results 
     for county_name in county_votes:
   ```
   
-   an `if` statement was added. Upon each loop, the `if` statement checked if the current county's votes, `county_vote_count`, was greater than `largest_county_votes` *and* the current county's vote percentage, `county_percentage`, was greater than `largest_county_percentage`. If both conditions were `true`, `largest_county_votes` was set equal to `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
+   an `if` statement was added. Upon each loop, the `if` statement checked if the current county's votes, `county_vote_count`, was greater than `largest_county_votes` *and* if the current county's vote percentage, `county_percentage`, was greater than `largest_county_percentage`. If both conditions were `true`, `largest_county_votes` was set equal to `county_vote_count`, `largest_county_turnout` equal to `county_name`, and `largest_county_percentage` equal to `county_percentage`.
   
   ```Python
       # If statement to determine the winning county and get its vote count.
@@ -302,7 +302,7 @@ Once these dependencies and variables were established, we obtained the results 
       candidate_name = row[2]
   ```
   
-  An `if` statement was nested inside of the `for` loop to check if the `candidate_name` was added to the `candidate_options` list yet. If the `candidate_name` was `not in` `candidate_options`, the `candidate_name` would be added to `candidate_options` with the `append()` method, and the number of votes for that candidate would begin to be tracked within the `candidate_votes` dictionary.
+  An `if` statement was nested inside of the `for` loop to check if the `candidate_name` was added to the `candidate_options` list yet. If the `candidate_name` was `not in` `candidate_options`, the `candidate_name` was added to `candidate_options` with the `append()` method, and the number of votes for that candidate would begin to be tracked within the `candidate_votes` dictionary.
   
   ```Python
       # If the candidate does not match any existing candidate add it to the candidate list
@@ -399,7 +399,7 @@ Once these dependencies and variables were established, we obtained the results 
     for candidate_name in candidate_votes:
   ```
   
-  an `if` statement was added. Upon each loop, the `if` statement checked if the current candidate's total votes, `votes`, was greater than `winning_count` *and* the current candidate's percentage of votes, `vote_percentage`, was greater than `winning_percentage`. If both conditions were `true`, `winning_count` was set equal to `votes`, `winning_candidate` equal to `candidate_name`, and `winning_percentage` equal to `vote_percentage`.
+  an `if` statement was added. Upon each loop, the `if` statement checked if the current candidate's total votes, `votes`, was greater than `winning_count` *and* if the current candidate's percentage of votes, `vote_percentage`, was greater than `winning_percentage`. If both conditions were `true`, `winning_count` was set equal to `votes`, `winning_candidate` equal to `candidate_name`, and `winning_percentage` equal to `vote_percentage`.
   
   ```Python
       # Determine winning vote count, winning percentage, and candidate.
